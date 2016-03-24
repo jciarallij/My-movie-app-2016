@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+$('#searchFilter').change(function(){
+	console.log($(this).val());
+});
+
 var imagePath;
 var baseURL = 'https://api.themoviedb.org/3/';
 var apiKey = '?api_key=9a8b1f8e37339a58294a5a6d4208514c';
@@ -8,7 +12,15 @@ var apiKey = '?api_key=9a8b1f8e37339a58294a5a6d4208514c';
 
 var configURL = baseURL + 'configuration' + apiKey;
 
-		$get.JSON(configURL, function(configData){
+		$.getJSON(configURL, function(configData){
+
+			imagePath = configData.images.base_url;
+
+		});
+
+var genreURL = baseURL + 'genre/movie/list/' + apiKey;
+
+		$.getJSON(configURL, function(configData){
 
 			imagePath = configData.images.base_url;
 
@@ -17,18 +29,18 @@ var configURL = baseURL + 'configuration' + apiKey;
 
 var nowPlaying = baseURL + "movie/now_playing" + apiKey;
 
-		$get.JSON(nowPlaying, function(movieData){
+		$.getJSON(nowPlaying, function(movieData){
 			var newHTML = '';
 
 			for(i=0; i<movieData.results[i].length; i++){
 				var currentPoster = imagePath + 'w300' + movieData.results[i].poster_path;
-				newHTML += '<div class="col-sm-3">';
+				newHTML += '<div class="col-sm-3 now-playing">';
 				newHTML += '<img src="' + currentPoster + '">';
 				newHTML += '</div>';
 			}
 			
 			$('#poster-grid').html(newHTML);
-
+			getIsotpe();
 		});
 
 
@@ -61,7 +73,13 @@ var searchURL = baseURL + 'search/' + searchFilter + apiKey + '&query=' + encode
 
 		});
 
-
+		$('#comedy-filter').click(function(){
+			$('#poster-grid').isotope({ filter: '.comedy'});
+			$('#poster-grid').isotope({ filter: '.horror'});
+			$('#poster-grid').isotope({ filter: '.action'});
+			$('#poster-grid').isotope({ filter: '.drama'});
+			$('#poster-grid').isotope({ filter: '.classic'});
+		});
 		
 
 
@@ -109,43 +127,45 @@ var searchURL = baseURL + 'search/' + searchFilter + apiKey + '&query=' + encode
 
 // --------------------------- typeahead code -----------------------------------
 
-// var substringMatcher = function(strs) {
-//   return function findMatches(q, cb) {
-//     var matches, substringRegex;
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
 
-//     // an array that will be populated with substring matches
-//     matches = [];
+    // an array that will be populated with substring matches
+    matches = [];
 
-//     // regex used to determine if a string contains the substring `q`
-//     substrRegex = new RegExp(q, 'i');
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
 
-//     // iterate through the pool of strings and for any string that
-//     // contains the substring `q`, add it to the `matches` array
-//     $.each(strs, function(i, str) {
-//       if (substrRegex.test(str)) {
-//         matches.push(str);
-//       }
-//     });
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
 
-//     cb(matches);
-//   };
-// };
+    cb(matches);
+  };
+};
 
-// var actors = [
-// 	'Brad Pitt',
-// 	'Michael Douglas',
-// 	'Al Pacino'
-// ];
+var actors = [
+	'Brad Pitt',
+	'Michael Douglas',
+	'Al Pacino'
+];
 
-// $('#movie-form .typeahead').typeahead({
-//   hint: true,
-//   highlight: true,
-//   minLength: 1
-// },
-// {
-//   name: 'actors',
-//   source: substringMatcher(actors)
-// });
+$('#movie-form .typeahead').typeahead(
+	{
+		  hint: true,
+		  highlight: true,
+		  minLength: 1
+	},
+	{
+		  name: 'actors',
+		  source: substringMatcher(actors)
+	
+});
 
 
 
@@ -161,3 +181,17 @@ var searchURL = baseURL + 'search/' + searchFilter + apiKey + '&query=' + encode
 // 			} else {
 // 				var endPoint = 'search/multi';
 // 			} 
+
+
+
+
+function getIsotpe(){
+	$('#poster-grid').isotope({
+		itemSelector: '.now-playing',
+		layoutMode: 'fitRows'
+	});
+}
+
+
+
+
