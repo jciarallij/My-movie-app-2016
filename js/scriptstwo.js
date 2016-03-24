@@ -12,7 +12,7 @@ $(document).ready(function(){
 	//The configURL so that we can get basic config data
 	var configURL = baseURL + 'configuration' + apiKey;
 
-	//Make an AJAX call to the config URL.
+		//Make an AJAX call to the config URL.
 	$.getJSON(configURL, function(configData){
 		//Set our global var imagePath to the result of our AJAX call
 		imagePath = configData.images.base_url;
@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 
 	var genreURL = baseURL + '/genre/movie/list' + apiKey;
-	//Make an AJAX call to the config URL.
+		//Make an AJAX call to the config URL.
 	$.getJSON(genreURL, function(configData){
 		//Set our global var imagePath to the result of our AJAX call
 		imagePath = configData.images.base_url;
@@ -39,7 +39,7 @@ $(document).ready(function(){
 			newHTML += '<div class="col-sm-3 now-playing">';
 			newHTML += '<img src="' + currentPoster + '">';
 			newHTML += '</div>';
-			// console.log(currentPoster);
+		
 		}
 		$('#poster-grid').html(newHTML);
 
@@ -48,8 +48,6 @@ $(document).ready(function(){
 
 
 	$('#movie-form').submit(function(event){
-		// var userSearch = $('.typeahead').typeahead('val');
-		// console.log(userSearch);
 
 		//Value the user searched for
 		var userSearch = $('#searchText').val();
@@ -75,12 +73,12 @@ $(document).ready(function(){
 					var currentPoster = imagePath + 'w300' + movieData.results[i].poster_path;
 				}
 
-				// console.log(movieData.results[i]);
+				
 
 				newHTML += '<div class="col-sm-3">';
 				newHTML += '<img src="' + currentPoster + '">';
 				newHTML += '</div>';
-				// console.log(currentPoster);
+				
 			}
 			$('#poster-grid').html(newHTML);
 		});		
@@ -94,9 +92,7 @@ $(document).ready(function(){
 
 });
 
-// $('#searchText').keyup(function(){
-// 	$(this).val();
-// });
+
 
 var substringMatcher = function(strs) {
   return function findMatches(q, cb) {
@@ -129,7 +125,7 @@ for (i=1; i <= 6; i++) {
 		for(j=0; j<popularM.results.length; j++){
 			arrayToSearch.push(popularM.results[j].original_title);
 		}
-		// console.log(arrayToSearch);
+		
 	});
 }
 
