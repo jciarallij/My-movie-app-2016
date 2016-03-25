@@ -1,4 +1,105 @@
 /* line 2, ../compass/sass/style.scss */
+
 #poster-grid img {
   width: 100%;
+  margin-top: 10px;
+}
+
+body {
+	background-image: url('../img/filmstrip4.png'), url('../img/filmstrip4.png');
+	background-size: 370px 300px;
+	background-position: left top, right top;
+	background-repeat: repeat-y;
+	/*background-color: #ff9900*/
+}
+
+.container {
+	background-image: url('../img/curtain.jpg');
+	background-repeat: repeat-y;
+	background-size: 100% 100%;
+	/*height: 100%;*/
+}
+
+.top-header {
+	background-image: url('../img/moviesign2.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 400px;
+	margin-bottom: 10px;
+}
+
+
+
+@font-face {
+    font-family: ace;
+    src: url("../fonts/animeace.ttf");
+    font-family: american;
+    src: url("../fonts/American Captain.ttf");
+}
+
+/*#page-heading {*/
+/*	font-family: ace;
+	font-size: 30px;
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}*/
+
+option {
+	font-family: american;
+}
+
+input#searchText.typeahead.tt-input{
+	
+	font-size: 18px;
+	height: 40px;
+	width: 200px;
+	height: 40px;
+	font-family: american;
+	background-image: url('../img/popcorn.jpg');
+	background-color: white;
+	border-color: black;
+	top: -8px;
+
+}
+
+input {
+	font-family: american;
+	background-color: #f0f300;
+	border-color: black;
+
+}
+
+#searchText {
+	
+}
+
+.style-select select{
+	background-color: #f0f300;
+	border-color: black;
+   	font-size: 18px;
+   	margin-top: 16%;
+   	height: 39px;
+   	width: 100px;
+   	font-family: american;
+   	color: black;
+
+}
+
+.btn.btn-primary {
+	background-color: #f0f300;
+	border-color: black;
+   	font-size: 18px;
+   	color: black;
+   	font-family: american;
+}
+
+
+select {
+	margin-top: 5px;
+}
+
+.now-playing{
+    height: 80%;
+     height: 480px;
+     width: 23%;
 }

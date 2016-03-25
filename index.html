@@ -10,13 +10,14 @@
 <body>
 
 
+
 <div class="container">
 
-		<div class="row">
-			<div class="col-sm-12 text-center">
+		<div class="row top-header">
+			<div class="col-sm-12 text-center style-select">
 				<form id="movie-form">
 					<input type="text" id="searchText" class="typeahead" placeholder="Search for...">
-					<input type="submit" class="btn btn-primary" value="search">
+					<input type="submit" class="btn btn-primary" value="Search">
 					<select id="searchFilter">
 						<option value="movie">Movie</option>
 						<option value="actor">Actor</option>
@@ -28,30 +29,24 @@
 		</div>
 
 		<div class="row">
-			<div class="col-sm-12 text-center">
-				<input type="button" id="comedy-filter" class="btn btn-default" value="Comedy">
-				<input type="button" id="horror-filter" class="btn btn-default" value="Horror">
-				<input type="button" id="action-filter" class="btn btn-default" value="Action">
-				<input type="button" id="drama-filter" class="btn btn-default" value="Drama">
-				<input type="button" id="classic-filter" class="btn btn-default" value="Classic">
-				
+			<div id="genre-buttons" class="col-sm-12 text-center">
+				<!--  Our Genre Buttons will go here!! -->
 			</div>
-		</div>
+		</div
 
 
 		<div class="row">
 			<div id="page-heading" class="col-sm-12">
-				Now Playing
+			<!-- 	Now Playing -->
 			</div>
-		</div>
+		
 
 		<div class="row">
 			<div id="poster-grid" class="col-sm-12">
 				<!-- Add in the HTML here via jQuery!! -->
 			</div>
 		</div>
-
-
+	</div>
 </div>
 
 
