@@ -7,6 +7,10 @@
   max-height: 400px;
 }
 
+.movie-poster {
+	min-height: 370px;
+}
+
 body {
 	background-image: url('../img/filmstrip4.png'), url('../img/filmstrip4.png');
 	background-size: 370px 300px;
@@ -31,6 +35,10 @@ body {
 }
 
 
+::-webkit-input-placeholder {
+  color: #000;
+  padding-left: 10px;
+}
 
 @font-face {
     font-family: ace;

@@ -62,7 +62,7 @@ var searchURL = baseURL + 'search/' + searchFilter + apiKey + '&query=' + encode
 					} else{
 						var currentPoster = imagePath + 'w300' + movieData.results[i].poster_path;
 					}
-						newHTML += '<div class="col-sm-3">';
+						newHTML += '<div class="col-sm-3 movie-poster">';
 						newHTML += '<img src="' + currentPoster + '">';
 						newHTML += '</div>';
 					}
